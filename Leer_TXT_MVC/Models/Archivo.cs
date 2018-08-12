@@ -18,10 +18,11 @@ namespace Leer_TXT_MVC.Models
             try
             {
                 string filePath = string.Empty;
-                filePath = path + Path.GetFileName(file.FileName);
+                string fimeName = Path.GetFileName(file.FileName);
+                filePath = path + fimeName;
                 string extension = Path.GetExtension(file.FileName);
                 file.SaveAs(filePath);
-                return filePath;
+                return fimeName;
             }
             catch (Exception)
             {
@@ -29,8 +30,9 @@ namespace Leer_TXT_MVC.Models
             }
         }
 
-        public void CheckRegister(string filePath1, string filePath2)
+        public Registed[] CheckRegister(string filePath1, string filePath2)
         {
+            string result_cheked = "";
             //-----------------------------------------------------------------//
             //Se crea un vector con las letras establecidas en el contenido.txt
             //-----------------------------------------------------------------//
@@ -106,42 +108,56 @@ namespace Leer_TXT_MVC.Models
                 if (count == wordLength)
                 {
                     registedCheck[i].check = 1;
-                    //Llamar metodo que me cree el archivo txt. 
                 }
+
             }
 
+            return registedCheck;
         }
 
-        public Array CompararArchivo(string ruta)
+        // Modelo que crea el archivo de salida.
+        public String CreateTXT(Registed[] registedCheck, string path)
         {
-            Array registrados = BajarArchivo(ruta);
-            return registrados;
+            string filePath = string.Empty;
+            filePath = path + "Resultados.txt";
 
-        }
-        public Array BajarArchivo( String ruta)
-        {
-
-            Array ArchivoCOmpleto = null;
-            
-            Console.WriteLine(ArchivoCOmpleto );
-            if (File.Exists(ruta))
+            if (!Directory.Exists(path))
             {
-                ArchivoCOmpleto = File.ReadAllLines(ruta);
-                if (ArchivoCOmpleto != null)
+                Directory.CreateDirectory(path);
+            }
+            StreamWriter outputFile = File.CreateText(filePath);
+
+
+            string check = "";
+            foreach (var registed in registedCheck)
+            {
+                if (registed.check == 1)
                 {
-                    return ArchivoCOmpleto;
-                    
+                    check = registed.name + " --> Si esta registrado";
                 }
-            }
-            else
-            {
-                // File does not exist.
-                //result = "The file does not exist.";
-                return ArchivoCOmpleto;
-            }
-            return ArchivoCOmpleto;
+                else
+                {
+                    check = registed.name + " --> No esta registrado";
+                }
 
+                outputFile.WriteLine(check);
+            }
+            outputFile.Dispose();
+
+            return filePath;
 
         }
-    }
+
+        public void ReadFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                string txtData = File.ReadAllText(filePath);
+                string[] letterArryaCode = txtData.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+            }         
+        }
+
+
+    }   
 }

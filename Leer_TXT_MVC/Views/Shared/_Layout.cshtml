@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - LEER TXT MVC</title>
+    <title>@ViewBag.Title - CHECK REGISTER MVC</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -17,11 +17,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("LEER TXT MVC", "Carga", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("CHECK REGISTER MVC", "Carga", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">>
-                    <li>@Html.ActionLink("Carga", "Carga", "Home")</li>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Subir Archivos", "Carga", "Home")</li>
+                    <li>@Html.ActionLink("Mostar Resultado", "FileShow", "Home")</li>
                 </ul>
             </div>
         </div>

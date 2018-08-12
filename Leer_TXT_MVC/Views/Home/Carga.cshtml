@@ -1,26 +1,29 @@
 ﻿
 @{
-    ViewBag.Title = "Carga";
+    ViewBag.Title = "Procesar Archivos De Registro";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-<h2>@ViewBag.Error </h2>
 
 
 <div class="container">
+    <h2>@ViewBag.Title.</h2>
+    <span>@ViewBag.Message</span>
+    <h2>@ViewBag.Error </h2>
+
     <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file1" />
+        <input class="form-control-file" type="file" name="file1" />
         <br />
-        <input type="file" name="file2" />
+        <input class="form-control-file" type="file" name="file2" />
         <br />
-        <input type="submit" name="name" value="Cargar" />
+        <input type="submit" name="name" value="Cargar" class="btn btn-default" />
+        @{
+            if (@ViewBag.Band == 1){
+                @Html.ActionLink("Resultados", "FileShow", "Home", new { @class = "btn btn-primary" })
+            }
+        }
+
     </form>
 </div>
 
-<h2>@ViewBag.Correcto </h2>
-
- <h1>Datos archivo 1 @ViewData["resultados"]</h1>
- <h1>Datos archivo 2 @ViewData["resultados2"]</h1>

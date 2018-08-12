@@ -155,6 +155,7 @@
     <Compile Include="Models\Archivo.cs" />
     <Compile Include="Models\Letters.cs" />
     <Compile Include="Models\Registed.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +195,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Carga.cshtml" />
+    <Content Include="Views\Home\FileShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
