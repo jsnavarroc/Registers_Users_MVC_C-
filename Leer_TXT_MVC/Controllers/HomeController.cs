@@ -36,8 +36,18 @@ namespace Leer_TXT_MVC.Controllers
                 string filePath2 = modelo.SubirArchivo(path, file2);
      
 
+                modelo.CheckRegister(filePath1, filePath2);
 
-        
+
+                /*
+                    ViewBag.Error = modelo.Error;
+                    ViewBag.Correcto = modelo.Confirmacion;     
+
+                    Array resultados = modelo.CompararArchivo(ruta1);
+                    ViewData["resultados"] = resultados;
+                    Array resultados2 = modelo.CompararArchivo(ruta2);
+                    ViewData["resultados2"] = resultados2;
+                    */
 
                 return View();
                 
