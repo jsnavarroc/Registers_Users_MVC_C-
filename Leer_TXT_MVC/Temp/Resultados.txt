@@ -1,5 +1,0 @@
-VOLOTEA --> Si esta registrado
-POBEDA --> Si esta registrado
-COBALT --> No esta registrado
-VUELING --> Si esta registrado
-CONSILIUM --> No esta registrado
